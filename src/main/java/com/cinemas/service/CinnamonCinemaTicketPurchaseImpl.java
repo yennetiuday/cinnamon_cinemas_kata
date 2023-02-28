@@ -15,11 +15,16 @@ public class CinnamonCinemaTicketPurchaseImpl implements TicketPurchase{
 
     @Override
     public List<String> bookTickets(int numberOfSeatsSelected) throws Exception {
+        List<String> bookedTickets;
         if (numberOfSeatsSelected > 3) {
             throw new Exception("Number of Seats selected should be less than 3");
         }
         List<String> availableTicketsClone = new ArrayList<>(cinnamonCinemas.getRow_seats_combo());
-        List<String> bookedTickets = availableTicketsClone.subList(0, numberOfSeatsSelected);
+        if(availableTicketsClone.size() > 0) {
+            bookedTickets = availableTicketsClone.subList(0, numberOfSeatsSelected);
+        } else {
+            throw new Exception("All the tickets were booked.");
+        }
         cinnamonCinemas.getRow_seats_combo().removeAll(bookedTickets);
         return bookedTickets;
     }

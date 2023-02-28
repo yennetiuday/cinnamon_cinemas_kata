@@ -26,8 +26,14 @@ class CinnamonCinemaTicketPurchaseImplTest {
         assertEquals(Arrays.asList("A4", "A5"), ticketBooking.bookTickets(2));
         assertEquals(Arrays.asList("B1", "B2"), ticketBooking.bookTickets(2));
         assertEquals(Arrays.asList("B3", "B4"), ticketBooking.bookTickets(2));
+        assertEquals(Arrays.asList("B5", "C1", "C2", "C3", "C4", "C5"), ticketBooking.getAvailableTickets());
         assertEquals(Arrays.asList("B5"), ticketBooking.bookTickets(1));
+        assertEquals(Arrays.asList("C1", "C2", "C3", "C4", "C5"), ticketBooking.getAvailableTickets());
         assertEquals(Arrays.asList("C1", "C2"), ticketBooking.bookTickets(2));
+        assertEquals(Arrays.asList("C3", "C4", "C5"), ticketBooking.getAvailableTickets());
+        assertEquals(Arrays.asList("C3", "C4", "C5"), ticketBooking.bookTickets(3));
+        Exception exception = assertThrows(Exception.class, () -> ticketBooking.bookTickets(1));
+        assertEquals("All the tickets were booked." , exception.getMessage());
     }
 
     @Test

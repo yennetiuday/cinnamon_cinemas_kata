@@ -9,7 +9,7 @@ public class Cinema {
             "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
     private List<String> row_seats_combo;
-    private int number_of_rows, number_of_seats_per_row;
+    private Integer number_of_rows, number_of_seats_per_row;
 
     public Cinema(int number_of_rows, int number_of_seats_per_row){
         setSeatNumbers(number_of_rows, number_of_seats_per_row);
